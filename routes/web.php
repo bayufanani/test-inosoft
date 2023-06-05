@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return phpinfo();
+    dd(Kendaraan::get());
     return view('welcome');
 });
