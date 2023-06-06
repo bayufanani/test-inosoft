@@ -2,36 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\KendaraanRepository;
-use Illuminate\Http\Request;
+use App\Services\KendaraanService;
+use DB;
 
 class KendaraanController extends Controller
 {
-    public function index(KendaraanRepository $kendaraanRepository)
+    public function index(KendaraanService $kendaraanService)
     {
-        return $kendaraanRepository->all();
+        return $kendaraanService->all();
     }
 
-    public function store(KendaraanRepository $kendaraanRepository)
+    public function store(kendaraanService $kendaraanService)
     {
         // sementara simpan semua
         try {
-            $kendaraan = $kendaraanRepository->create(request()->all());
+            $kendaraan = $kendaraanService->create(request()->all());
             return $this->sendResponse($kendaraan, 'Sukses menambahkan data kendaraan');
         } catch (\Exception $e) {
             return $this->sendError([], $e->getMessage());
         }
     }
 
-    public function update($id, KendaraanRepository $kendaraanRepository)
+    public function update($id, kendaraanService $kendaraanService)
     {
-        $kendaraan = $kendaraanRepository->update($id, request()->all());
+        $kendaraan = $kendaraanService->update($id, request()->all());
         return $this->sendResponse($kendaraan, 'Sukses mengubah data kendaraan');
     }
 
-    public function destroy($id, KendaraanRepository $kendaraanRepository)
+    public function destroy($id, kendaraanService $kendaraanService)
     {
-        $kendaraan = $kendaraanRepository->delete($id);
+        $kendaraan = $kendaraanService->delete($id);
         return $this->sendResponse($kendaraan, 'Sukses menghapus data kendaraan');
     }
 }
