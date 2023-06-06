@@ -11,4 +11,10 @@ class PenjualanController extends Controller
     {
         return $penjualanRepository->all();
     }
+
+    public function store(PenjualanRepository $penjualanRepository)
+    {
+        $penjualan = $penjualanRepository->create(request()->all());
+        return $this->sendResponse($penjualan, 'Sukses menambahkan data penjualan');
+    }
 }
