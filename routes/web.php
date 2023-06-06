@@ -2,6 +2,7 @@
 
 use App\Models\Kendaraan;
 use Illuminate\Support\Facades\Route;
+use App\Repositories\KendaraanRepository;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    dd(Kendaraan::get());
+Route::get('/', function (KendaraanRepository $kendaraan) {
+    return $kendaraan->all();
     return view('welcome');
 });
