@@ -24,13 +24,14 @@ class KendaraanRepository implements BaseRepository
     }
     function create($data)
     {
-        $baru = new $this->kendaraan;
-        $baru->app = $data;
+        $baru = new $this->kendaraan($data);
         $baru->save();
         return $baru;
     }
     function update($id, $data)
     {
+        $update = $this->kendaraan->find($id)->update($data);
+        return $update;
     }
     function delete($id)
     {

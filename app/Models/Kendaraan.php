@@ -10,4 +10,16 @@ class Kendaraan extends Model
 {
 
     use HasFactory;
+
+    protected $fillable = [
+        'tahun_keluaran',
+        'warna',
+        'harga',
+        'mesin',
+        'tipe_suspensi',
+        'tipe_transmisi',
+        'kapasitas_penumpan',
+        'tipe',
+        'jenis',
+    ];
 }
