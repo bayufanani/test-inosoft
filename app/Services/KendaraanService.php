@@ -13,6 +13,11 @@ class KendaraanService
         $this->kendaraanRepository = $kendaraanRepository;
     }
 
+    function all()
+    {
+        return $this->kendaraanRepository->all();
+    }
+
     function findById($id)
     {
         return $this->kendaraanRepository->findById($id);
