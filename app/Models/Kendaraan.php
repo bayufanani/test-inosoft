@@ -23,4 +23,10 @@ class Kendaraan extends Model
         'jenis',
         'stok',
     ];
+
+    protected $casts = [
+        'tahun_keluaran' => 'integer',
+        'harga' => 'integer',
+        'stok' => 'integer',
+    ];
 }
