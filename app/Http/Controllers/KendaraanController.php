@@ -24,4 +24,10 @@ class KendaraanController extends Controller
         $kendaraan = $kendaraanRepository->update($id, request()->all());
         return $this->sendResponse($kendaraan, 'Sukses mengubah data kendaraan');
     }
+
+    public function destroy($id, KendaraanRepository $kendaraanRepository)
+    {
+        $kendaraan = $kendaraanRepository->delete($id);
+        return $this->sendResponse($kendaraan, 'Sukses menghapus data kendaraan');
+    }
 }

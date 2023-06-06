@@ -35,5 +35,7 @@ class KendaraanRepository implements BaseRepository
     }
     function delete($id)
     {
+        $delete = $this->kendaraan->find($id)->delete();
+        return $delete;
     }
 }
