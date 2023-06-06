@@ -37,4 +37,11 @@ class KendaraanService
         $delete = $this->kendaraanRepository->findById($id)->delete();
         return $delete;
     }
+
+    function reduceStok($id, $jumlah)
+    {
+        $kendaraan = $this->kendaraanRepository->findById($id);
+        $kendaraan->stok = $kendaraan->stok - $jumlah;
+        $kendaraan->save();
+    }
 }

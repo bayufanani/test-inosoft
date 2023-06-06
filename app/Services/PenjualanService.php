@@ -30,6 +30,7 @@ class PenjualanService
         if ($kendaraan->stok - $data['jumlah_pembelian'] < 0) {
             return throw new \Exception('Stok kendaraan tidak mencukupi, sisa stok ' . $kendaraan->stok);
         }
+        $this->kendaraanService->reduceStok($kendaraan->id, $data['jumlah_pembelian']);
         $baru = $this->penjualanRepository->create($data);
         return $baru;
     }
