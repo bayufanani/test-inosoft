@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\PenjualanRepository;
+use App\Services\PenjualanService;
 use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
-    public function index(PenjualanRepository $penjualanRepository)
+    public function index(PenjualanService $penjualanService)
     {
-        return $penjualanRepository->all();
+        return $penjualanService->all();
     }
 
-    public function store(PenjualanRepository $penjualanRepository)
+    public function store(PenjualanService $penjualanService)
     {
-        $penjualan = $penjualanRepository->create(request()->all());
+        $penjualan = $penjualanService->create(request()->all());
         return $this->sendResponse($penjualan, 'Sukses menambahkan data penjualan');
     }
 }
