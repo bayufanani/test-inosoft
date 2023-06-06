@@ -37,13 +37,4 @@ class KendaraanRepository implements BaseRepository
         $delete = $this->kendaraan->find($id)->delete();
         return $delete;
     }
-
-    public function kurangi($id, $jumlah)
-    {
-        $kendaraan = $this->findById($id);
-        if ($kendaraan->stok - $jumlah < 0) {
-            throw new \Exception('Stok tidak mencukupi');
-        }
-        $this->findById($id)->update(['stok' => $this->findById($id)->stok - $jumlah]);
-    }
 }

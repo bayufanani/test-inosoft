@@ -28,10 +28,7 @@ class PenjualanRepository
     }
     function create($data)
     {
-        $data['tanggal_pembelian'] = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
-        $baru = new $this->penjualan($data);
-        $baru->save();
-        $this->kendaraanRepository->kurangi($baru->id_kendaraan, $baru->jumlah_pembelian);
+        $baru = $this->penjualan->create($data);
         return $baru;
     }
     function update($id, $data)
