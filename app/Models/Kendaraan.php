@@ -21,5 +21,6 @@ class Kendaraan extends Model
         'kapasitas_penumpan',
         'tipe',
         'jenis',
+        'stok',
     ];
 }
