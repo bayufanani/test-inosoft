@@ -15,8 +15,12 @@ class KendaraanController extends Controller
     public function store(KendaraanRepository $kendaraanRepository)
     {
         // sementara simpan semua
-        $kendaraan = $kendaraanRepository->create(request()->all());
-        return $this->sendResponse($kendaraan, 'Sukses menambahkan data kendaraan');
+        try {
+            $kendaraan = $kendaraanRepository->create(request()->all());
+            return $this->sendResponse($kendaraan, 'Sukses menambahkan data kendaraan');
+        } catch (\Exception $e) {
+            return $this->sendError([], $e->getMessage());
+        }
     }
 
     public function update($id, KendaraanRepository $kendaraanRepository)
