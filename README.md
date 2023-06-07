@@ -82,6 +82,10 @@ Membuat api service menggunakan:
     -   Melihat laporan penjualan setiap kendaraan, ada data kendaraan, stok, berapa kendaraan yang terjual, dan data penjualannya
     -   ![Laporan penjualan](./images/get-penjualan.png)
 
+### Tambahan
+
+Saya menambahkan export request api dari insomnia untuk mempermudah testing
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
