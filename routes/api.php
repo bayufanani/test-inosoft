@@ -17,12 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/penjualan/reports', [KendaraanController::class, 'reports']);
-Route::resource('kendaraan', KendaraanController::class);
-Route::resource('penjualan', PenjualanController::class);
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
+
+Route::group(['middleware' => ['jwt.auth']], function () {
+    Route::get('/penjualan/reports', [KendaraanController::class, 'reports']);
+    Route::resource('kendaraan', KendaraanController::class);
+    Route::resource('penjualan', PenjualanController::class);
 });
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

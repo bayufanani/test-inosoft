@@ -17,14 +17,15 @@ class AuthController extends Controller
         // $user->save();
         // return;
         $cridential = $request->only(['username', 'password']);
-        if (Auth::attempt($cridential)) {
-            $user = Auth::user();
-            if ($user instanceof User) {
-                $success['token'] = $user->createToken('mytokenapp')->plainTextToken;
-                return $this->sendResponse($success, 'Login Berhasil');
-            }
+        if (!$token = Auth::attempt($cridential)) {
+            return $this->sendError([], 'Unauthorized', 401);
         }
 
-        return $this->sendError([], 'Login Gagal');
+        $success = [
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+        ];
+        return $this->sendResponse($success, 'Login Berhasil');
     }
 }
