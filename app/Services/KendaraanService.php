@@ -47,6 +47,13 @@ class KendaraanService
 
     public function reports()
     {
-        return $this->kendaraanRepository->reports();
+        $reports = $this->kendaraanRepository->reports();
+        $penjualan = $reports->map(function ($item) {
+            $item->terjual = $item->penjualan->sum('jumlah_pembelian');
+            unset($item->created_at);
+            unset($item->updated_at);
+            return $item;
+        });
+        return $penjualan;
     }
 }

@@ -37,6 +37,7 @@ class KendaraanController extends Controller
 
     public function reports(KendaraanService $kendaraanService)
     {
-        return $kendaraanService->reports();
+        $reports = $kendaraanService->reports();
+        return $this->sendResponse($reports, 'Sukses mengambil data laporan');
     }
 }
