@@ -29,4 +29,9 @@ class Kendaraan extends Model
         'harga' => 'integer',
         'stok' => 'integer',
     ];
+
+    public function penjualan()
+    {
+        return $this->belongsToMany(Penjualan::class, 'id_kendaraan');
+    }
 }

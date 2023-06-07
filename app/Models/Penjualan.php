@@ -19,4 +19,9 @@ class Penjualan extends Model
         'tanggal_pembelian' => 'datetime',
         'jumlah_pembelian' => 'integer',
     ];
+
+    public function kendaraan()
+    {
+        return $this->hasOne(Kendaraan::class);
+    }
 }

@@ -20,7 +20,7 @@ class PenjualanRepository
 
     function all()
     {
-        return $this->penjualan->all();
+        return $this->penjualan->get()->first()->kendaraan;
     }
     function findById($id)
     {

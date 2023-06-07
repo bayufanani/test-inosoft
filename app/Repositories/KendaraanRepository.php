@@ -16,7 +16,7 @@ class KendaraanRepository implements BaseRepository
 
     function all()
     {
-        return $this->kendaraan->all();
+        return $this->kendaraan->with('penjualan')->get();
     }
     function findById($id)
     {
