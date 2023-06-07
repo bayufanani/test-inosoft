@@ -8,7 +8,6 @@ use Jenssegers\Mongodb\Eloquent\Model;
 
 class Kendaraan extends Model
 {
-
     use HasFactory;
 
     protected $fillable = [
@@ -32,6 +31,6 @@ class Kendaraan extends Model
 
     public function penjualan()
     {
-        return $this->belongsToMany(Penjualan::class, 'id_kendaraan');
+        return $this->hasMany(Penjualan::class, 'id_kendaraan');
     }
 }
