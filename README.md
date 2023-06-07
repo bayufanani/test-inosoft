@@ -1,63 +1,73 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Test Backend Inosoft
 
-## About Laravel
+Mulai pengerjaan 5 Juni 2023 - 7 Juni 2023
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tugas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Membuat api service menggunakan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   Laravel 8
+-   PHP 8
+-   Mongodb 4.2
 
-## Learning Laravel
+## Fitur Rest API
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Lihat stok kendaraan
+1. Penjualan kendaraan
+1. Laporan penjualan per kendaraan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Panduan Instalasi
 
-## Laravel Sponsors
+1. Pertama copas file .env.example menjadi file .env atau menggunakan perintah copy
+    ```bash
+    cp .env.example .env
+    ```
+1. Kemudian install composer dengan perintah
+    ```bash
+    composer install
+    ```
+1. Setelah selesai instalasi semua dependensi, generate key aplikasi
+    ```bash
+    php artisan key:generate
+    ```
+1. Generate key JWT
+    ```bash
+    php artisan jwt:secret
+    ```
+1. Seed db, untuk data awal dicoba-coba dan login user `user: admin, pass: admin`
+    ```bash
+    php artisan db:seed
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## URL API
 
-### Premium Partners
+### Autentikasi
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   POST `/api/auth/login`
+    -   URL login user default `user:admin , pass: admin`. Dari sini nanti akan mendapat token JWT yang nantinya digunakan untuk berinteraksi dengan API, karena sudah dilindungi dengan autentikasi dengan bearer token
 
-## Contributing
+### CRUD Kendaraan
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   GET `/api/kendaraan`
+    -   Endpoint untuk melihat semua kendaraan
+-   POST `/api/kendaraan`
+    -   Endpoint untuk menambahkan kendaraan baik motor maupun mobil, parameter yang diterima berupa form url encoded, seperti `tahun_keluaran(number), warna(string), harga(number), mesin(string), tipe_suspensi(string), tipe_transmisi(string), jenis(motor|mobil), dan stok(number)`.
+-   PUT `/api/kendaraan/{id}`
+    -   Endpoint untuk mengupdate parameter yang ada beberapa atau semuanya dengan passing id di URL.
+-   DELETE `/api/kendaraan/{id}`
+    -   Endpoint untuk menghapus data kendaraan dengan passing id di URL
 
-## Code of Conduct
+### Penjualan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   GET `/api/penjualan`
+    -   Melihat data penjualan yang sudah ada
+-   POST `/api/penjualan`
+    -   Membuat data penjualan dengan inputkan data `id_kendaraan(string), nama_pelanggan(string), jumlah_pembelian(number)
+    -   Ketika data ini di buat stok di kendaraan yang berkaitan akan di kurangi
+-   GET `/api/penjualan/reports`
+    -   Melihat laporan penjualan setiap kendaraan, ada data kendaraan, stok, berapa kendaraan yang terjual, dan data penjualannya
 
 ## License
 
