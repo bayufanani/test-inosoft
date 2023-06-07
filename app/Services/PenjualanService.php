@@ -4,6 +4,7 @@ namespace App\Services;
 
 use DateTime;
 use DateTimeZone;
+use MongoDb\BSON\ObjectId;
 use App\Repositories\PenjualanRepository;
 
 class PenjualanService
@@ -31,6 +32,7 @@ class PenjualanService
             return throw new \Exception('Stok kendaraan tidak mencukupi, sisa stok ' . $kendaraan->stok);
         }
         $this->kendaraanService->reduceStok($kendaraan->id, $data['jumlah_pembelian']);
+        $data['id_kendaraan'] = new ObjectId($id_kendaraan);
         $baru = $this->penjualanRepository->create($data);
         return $baru;
     }

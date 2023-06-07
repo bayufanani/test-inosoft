@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\PenjualanRepository;
 use App\Services\PenjualanService;
 use Exception;
-use Illuminate\Http\Request;
 
 class PenjualanController extends Controller
 {
