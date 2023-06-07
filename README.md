@@ -45,29 +45,38 @@ Membuat api service menggunakan:
 
 ### Autentikasi
 
--   POST `/api/auth/login`
-    -   URL login user default `user:admin , pass: admin`. Dari sini nanti akan mendapat token JWT yang nantinya digunakan untuk berinteraksi dengan API, karena sudah dilindungi dengan autentikasi dengan bearer token
+-   POST `/api/auth/login` - URL login user default `user:admin , pass: admin`. Dari sini nanti akan mendapat token JWT yang nantinya digunakan untuk berinteraksi dengan API, karena sudah dilindungi dengan autentikasi dengan bearer token
+    -   Contoh request
+        ![Request Login](./images/login.png)
 
 ### CRUD Kendaraan
 
 -   GET `/api/kendaraan`
     -   Endpoint untuk melihat semua kendaraan
+    -   ![Get Kendaraan](./images/get-kendaraan.png)
 -   POST `/api/kendaraan`
     -   Endpoint untuk menambahkan kendaraan baik motor maupun mobil, parameter yang diterima berupa form url encoded, seperti `tahun_keluaran(number), warna(string), harga(number), mesin(string), tipe_suspensi(string), tipe_transmisi(string), jenis(motor|mobil), dan stok(number)`.
+    -   ![Kendaraan gagal tanpa token (motor)](./images/post-kendaraan.png)
+    -   ![Kendaraan berhasil (mobil)](./images/post-kendaraan2.png)
 -   PUT `/api/kendaraan/{id}`
     -   Endpoint untuk mengupdate parameter yang ada beberapa atau semuanya dengan passing id di URL.
+    -   ![Update kendaraan, stok](./images/put-kendaraan.png)
 -   DELETE `/api/kendaraan/{id}`
     -   Endpoint untuk menghapus data kendaraan dengan passing id di URL
+    -   ![Hapus kendaraan](./images/delete-kendaraan.png)
 
 ### Penjualan
 
 -   GET `/api/penjualan`
     -   Melihat data penjualan yang sudah ada
+    -   ![Data penjualan](./images/get-penjualan.png)
 -   POST `/api/penjualan`
     -   Membuat data penjualan dengan inputkan data `id_kendaraan(string), nama_pelanggan(string), jumlah_pembelian(number)
     -   Ketika data ini di buat stok di kendaraan yang berkaitan akan di kurangi
+    -   ![Tambah data penjualan](./images/post-penjualan.png)
 -   GET `/api/penjualan/reports`
     -   Melihat laporan penjualan setiap kendaraan, ada data kendaraan, stok, berapa kendaraan yang terjual, dan data penjualannya
+    -   ![Laporan penjualan](./images/get-penjualan.png)
 
 ## License
 
