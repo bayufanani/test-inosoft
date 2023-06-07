@@ -20,7 +20,7 @@ Membuat api service menggunakan:
 
 ## Panduan Instalasi
 
-1. Pertama copas file .env.example menjadi file .env atau menggunakan perintah copy
+1. Pertama copas file .env.example menjadi file .env atau menggunakan perintah copy, dan update koneksi database
     ```bash
     cp .env.example .env
     ```
@@ -39,6 +39,10 @@ Membuat api service menggunakan:
 1. Seed db, untuk data awal dicoba-coba dan login user `user: admin, pass: admin`
     ```bash
     php artisan db:seed
+    ```
+1. Start server dengan
+    ```bash
+    php artisan serve
     ```
 
 ## URL API
