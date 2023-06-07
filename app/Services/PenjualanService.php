@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use DateTime;
 use DateTimeZone;
-use MongoDb\BSON\ObjectId;
 use App\Repositories\PenjualanRepository;
 
 class PenjualanService

@@ -1,12 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories;
 
-use DateTime;
-use DateTimeZone;
 use App\Models\Penjualan;
-use App\Repositories\BaseRepository;
-use Illuminate\Support\Facades\DB;
 
 class PenjualanRepository
 {

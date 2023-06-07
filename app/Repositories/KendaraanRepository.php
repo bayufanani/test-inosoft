@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Repositories;
 
 use App\Models\Kendaraan;
-use App\Repositories\BaseRepository;
 
-class KendaraanRepository implements BaseRepository
+class KendaraanRepository
 {
     protected $kendaraan;
 
