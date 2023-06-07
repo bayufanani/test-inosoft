@@ -34,4 +34,9 @@ class KendaraanController extends Controller
         $kendaraan = $kendaraanService->delete($id);
         return $this->sendResponse($kendaraan, 'Sukses menghapus data kendaraan');
     }
+
+    public function reports(KendaraanService $kendaraanService)
+    {
+        return $kendaraanService->reports();
+    }
 }

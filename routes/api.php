@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::get('/penjualan/reports', [KendaraanController::class, 'reports']);
 Route::resource('kendaraan', KendaraanController::class);
 Route::resource('penjualan', PenjualanController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {

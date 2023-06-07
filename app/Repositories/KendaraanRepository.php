@@ -16,7 +16,7 @@ class KendaraanRepository implements BaseRepository
 
     function all()
     {
-        return $this->kendaraan->with('penjualan')->get();
+        return $this->kendaraan->get();
     }
     function findById($id)
     {
@@ -36,5 +36,10 @@ class KendaraanRepository implements BaseRepository
     {
         $delete = $this->kendaraan->find($id)->delete();
         return $delete;
+    }
+
+    public function reports()
+    {
+        return $this->kendaraan->with('penjualan')->get();
     }
 }

@@ -18,23 +18,23 @@ class PenjualanRepository
         $this->kendaraanRepository = $kendaraanRepository;
     }
 
-    function all()
+    public function all()
     {
-        return $this->penjualan->with('kendaraan')->get();
+        return $this->penjualan->get();
     }
-    function findById($id)
+    public function findById($id)
     {
         return $this->penjualan->find($id);
     }
-    function create($data)
+    public function create($data)
     {
         $baru = $this->penjualan->create($data);
         return $baru;
     }
-    function update($id, $data)
+    public function update($id, $data)
     {
     }
-    function delete($id)
+    public function delete($id)
     {
     }
 }

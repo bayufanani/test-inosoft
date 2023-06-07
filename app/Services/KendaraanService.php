@@ -44,4 +44,9 @@ class KendaraanService
         $kendaraan->stok = $kendaraan->stok - $jumlah;
         $kendaraan->save();
     }
+
+    public function reports()
+    {
+        return $this->kendaraanRepository->reports();
+    }
 }

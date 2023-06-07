@@ -15,15 +15,15 @@ class PenjualanService
         $this->penjualanRepository = $penjualanRepository;
         $this->kendaraanService = $kendaraanService;
     }
-    function all()
+    public function all()
     {
         return $this->penjualanRepository->all();
     }
-    function findById($id)
+    public function findById($id)
     {
         return $this->penjualanRepository->findById($id);
     }
-    function create($data)
+    public function create($data)
     {
         $data['tanggal_pembelian'] = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
         $id_kendaraan = $data['id_kendaraan'];
@@ -36,10 +36,10 @@ class PenjualanService
         $baru = $this->penjualanRepository->create($data);
         return $baru;
     }
-    function update($id, $data)
+    public function update($id, $data)
     {
     }
-    function delete($id)
+    public function delete($id)
     {
     }
 }
