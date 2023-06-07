@@ -32,7 +32,7 @@ Membuat api service menggunakan:
     ```bash
     php artisan key:generate
     ```
-1. Generate key JWT
+1. Generate key JWT, kemungkinan butuh override ketik `yes` kemudian tekan enter
     ```bash
     php artisan jwt:secret
     ```
